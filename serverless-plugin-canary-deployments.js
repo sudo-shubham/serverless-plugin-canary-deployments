@@ -12,7 +12,12 @@ class ServerlessCanaryDeployments {
     this.hooks = {
       'before:package:finalize': this.addCanaryDeploymentResources.bind(this)
     }
+    const newCustomPropSchema = {
+      type: 'object'
+    };
+    serverless.configSchemaHandler.defineFunctionProperties('deploymentSettings', newCustomPropSchema);
   }
+  
 
   get codeDeployAppName () {
     const stackName = this.naming.getStackName()
