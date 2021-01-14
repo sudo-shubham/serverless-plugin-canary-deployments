@@ -15,7 +15,11 @@ class ServerlessCanaryDeployments {
     const newCustomPropSchema = {
       type: 'object'
     };
-    serverless.configSchemaHandler.defineFunctionProperties('deploymentSettings', newCustomPropSchema);
+    serverless.configSchemaHandler.defineFunctionProperties('aws', {
+      properties: {
+        deploymentSettings: { type: 'object' }
+      }
+    });
   }
   
 
